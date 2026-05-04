@@ -355,14 +355,14 @@ export default function App() {
               <span className={`font-bold ${th.textMain}`}>{convertedFiles.length}</span> file đã được chuyển đổi. Bạn có thể tải về bên dưới.
             </p>
 
-            <div className="flex flex-col gap-3 w-full mb-8">
+            <div className="flex flex-col gap-3 w-full mb-8 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
               {convertedFiles.map((cf, idx) => (
-                <div key={idx} className={`flex items-center justify-between p-3 rounded-xl border ${th.dropzoneBorder} bg-white/50 backdrop-blur-sm`}>
+                <div key={idx} className={`flex items-center justify-between p-3 rounded-xl border ${th.dropzoneBorder} bg-white/50 backdrop-blur-sm shrink-0`}>
                   <span className={`font-semibold truncate max-w-[200px] sm:max-w-[300px] ${th.textMain}`}>{cf.name}</span>
                   <a 
                     href={cf.url} 
                     download={cf.name}
-                    className={`flex items-center gap-2 ${th.primaryBtn} px-4 py-2 rounded-lg text-sm font-semibold transition-all`}
+                    className={`flex items-center gap-2 ${th.primaryBtn} px-4 py-2 rounded-lg text-sm font-semibold transition-all whitespace-nowrap`}
                   >
                     <Download className="w-4 h-4" />
                     {t.download}
