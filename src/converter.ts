@@ -1,8 +1,9 @@
 import * as pdfjsLib from 'pdfjs-dist';
 import { Document, Packer, Paragraph, TextRun, ISectionOptions, AlignmentType } from 'docx';
 
-// Set up PDF.js worker using CDN to bypass local bundler issues
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
+// Set up PDF.js worker using Vite's URL import pointing to node_modules
+import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.mjs?url';
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
 
 export const convertPdfToDocx = async (file: File): Promise<Blob> => {
   const arrayBuffer = await file.arrayBuffer();
